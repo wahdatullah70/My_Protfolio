@@ -1,0 +1,30 @@
+name: Portfolio CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile Python utilities
+        run: python -m compileall showcase
+      - name: Validate operations shell scripts
+        shell: bash
+        run: |
+          find ops-toolkit -type f -name '*.sh' -print0 | while IFS= read -r -d '' f; do
+            bash -n "$f"
+          done
+      - name: Validate Slurm batch script syntax as Bash
+        run: bash -n ops-toolkit/slurm-job-template.sbatch
+      - name: Install Infra Health API dependencies
+        run: pip install -r showcase/infra-health-api/requirements.txt
+      - name: Import Infra Health API
+        run: |
+          cd showcase/infra-health-api
+          python -c "import app; print(app.app.title)"
