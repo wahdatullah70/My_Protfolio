@@ -35,6 +35,27 @@ jobs:
           assert report['summary']['jobs_total'] == 3
           print(report['summary'])
           PY
+      - name: Run Kubernetes Platform Auditor tests
+        run: python -m unittest discover -s showcase/kubernetes-platform-auditor/tests -v
+      - name: Generate fixture-backed Kubernetes audit
+        shell: bash
+        run: |
+          set +e
+          python showcase/kubernetes-platform-auditor/platform_auditor.py \
+            --fixture-dir showcase/kubernetes-platform-auditor/fixtures \
+            --output /tmp/k8s-audit.json --pretty
+          rc=$?
+          set -e
+          test "$rc" -eq 1
+          python - <<'PY'
+          import json
+          report = json.load(open('/tmp/k8s-audit.json'))
+          assert report['status'] == 'warning'
+          assert report['summary']['nodes_with_pressure'] == 1
+          assert report['summary']['crashloop_pods'] == 1
+          assert report['summary']['pods_with_unready_containers'] == 2
+          print(report['summary'])
+          PY
       - name: Validate operations shell scripts
         shell: bash
         run: |
