@@ -8,6 +8,7 @@ My work focuses on multi-node systems, Slurm-based compute, Kubernetes platforms
 
 - **[AWS Mini Supercomputer](https://github.com/wahdatullah70/aws-mini-supercomputer)** — Slurm, AWS ParallelCluster, MPI, shared storage, distributed ML, benchmarking, security, and operations.
 - **[Cloud-Native IDS + MLOps](https://github.com/wahdatullah70/cloud-ids-mlops)** — Suricata, Zeek, Tetragon, streaming, feature fusion, reproducibility, and ONNX-oriented inference architecture.
+- **[Slurm Ops Automation](showcase/slurm-ops-automation)** — live/fixture Slurm node and job auditing with JSON/Markdown reports, alert rules, tests, and an operations runbook.
 - **[HPC Cluster Guardian](showcase/hpc-cluster-guardian)** — Linux + Slurm diagnostics with structured JSON output and an operations runbook.
 - **[Kubernetes Platform Auditor](showcase/kubernetes-platform-auditor)** — node/pod health auditing for Kubernetes operations and incident triage.
 - **[Infra Health API](showcase/infra-health-api)** — FastAPI + Docker + Kubernetes health/telemetry service with deployment guidance.
@@ -25,6 +26,8 @@ I work with Linux compute environments, Slurm, workload scheduling, node readine
 
 The **AWS Mini Supercomputer** repository demonstrates a small reproducible cluster design using AWS ParallelCluster, Slurm, MPI, distributed ML workflows, security controls, cost awareness, troubleshooting, and a measured-results framework.
 
+The **Slurm Ops Automation** project demonstrates day-to-day administrator workflow: collecting `sinfo`/`squeue` state, identifying drained/down nodes and pending/failed jobs, and producing reports for incident triage or scheduled automation. It can be demonstrated without a live cluster using committed fixtures.
+
 ### Kubernetes & platform engineering
 
 My Kubernetes work includes multi-node clusters, Helm deployments, Calico networking, Longhorn storage, workload troubleshooting, security telemetry, and research infrastructure.
@@ -41,6 +44,7 @@ The public **Cloud-Native IDS + MLOps** repository documents the architecture an
 
 ```text
 showcase/
+├── slurm-ops-automation/
 ├── hpc-cluster-guardian/
 ├── kubernetes-platform-auditor/
 └── infra-health-api/
