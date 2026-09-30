@@ -6,12 +6,12 @@ My work focuses on multi-node systems, Slurm-based compute, Kubernetes platforms
 
 ## Start here
 
-- **[AWS Mini Supercomputer](https://github.com/wahdatullah70/aws-mini-supercomputer)** — Slurm, AWS ParallelCluster, MPI, shared storage, distributed ML, and benchmarking.
-- **[Cloud-Native IDS + MLOps](https://github.com/wahdatullah70/cloud-ids-mlops)** — Suricata, Zeek, Tetragon, streaming, feature fusion, and ONNX-oriented inference architecture.
-- **[HPC Cluster Guardian](showcase/hpc-cluster-guardian)** — Linux + Slurm diagnostics with structured JSON output.
-- **[Kubernetes Platform Auditor](showcase/kubernetes-platform-auditor)** — node/pod health auditing for Kubernetes operations.
-- **[Infra Health API](showcase/infra-health-api)** — FastAPI + Docker + Kubernetes health/telemetry service.
-- **[Solar Pesticide Sprayer](https://github.com/wahdatullah70/iee_project)** — Flutter, Firebase, Raspberry Pi API, authentication, Firestore, and Storage.
+- **[AWS Mini Supercomputer](https://github.com/wahdatullah70/aws-mini-supercomputer)** — Slurm, AWS ParallelCluster, MPI, shared storage, distributed ML, benchmarking, security, and operations.
+- **[Cloud-Native IDS + MLOps](https://github.com/wahdatullah70/cloud-ids-mlops)** — Suricata, Zeek, Tetragon, streaming, feature fusion, reproducibility, and ONNX-oriented inference architecture.
+- **[HPC Cluster Guardian](showcase/hpc-cluster-guardian)** — Linux + Slurm diagnostics with structured JSON output and an operations runbook.
+- **[Kubernetes Platform Auditor](showcase/kubernetes-platform-auditor)** — node/pod health auditing for Kubernetes operations and incident triage.
+- **[Infra Health API](showcase/infra-health-api)** — FastAPI + Docker + Kubernetes health/telemetry service with deployment guidance.
+- **[Flutter + Firebase + Raspberry Pi](https://github.com/wahdatullah70/Flutter-Firebase-Raspberry-Pi-project)** — authentication, Firestore, Storage, REST APIs, device telemetry, deployment, and security documentation.
 
 ## What I work with
 
@@ -23,19 +23,19 @@ My work focuses on multi-node systems, Slurm-based compute, Kubernetes platforms
 
 I work with Linux compute environments, Slurm, workload scheduling, node readiness, distributed workloads, cluster troubleshooting, and reproducible HPC environments.
 
-The **AWS Mini Supercomputer** repository demonstrates a small reproducible cluster design using AWS ParallelCluster, Slurm, MPI, and distributed ML workflows.
+The **AWS Mini Supercomputer** repository demonstrates a small reproducible cluster design using AWS ParallelCluster, Slurm, MPI, distributed ML workflows, security controls, cost awareness, troubleshooting, and a measured-results framework.
 
 ### Kubernetes & platform engineering
 
 My Kubernetes work includes multi-node clusters, Helm deployments, Calico networking, Longhorn storage, workload troubleshooting, security telemetry, and research infrastructure.
 
-The public portfolio contains runnable utilities for cluster auditing and infrastructure health monitoring.
+The public portfolio contains runnable utilities for cluster auditing and infrastructure health monitoring, with runbooks that show how they fit into incident response and day-to-day operations.
 
 ### Security + MLOps
 
 My research combines cloud-native infrastructure with multi-sensor intrusion detection and ML inference.
 
-The public **Cloud-Native IDS + MLOps** repository documents the architecture and includes safe reproducible examples for event fusion and pipeline concepts while excluding credentials, private infrastructure data, and confidential research artifacts.
+The public **Cloud-Native IDS + MLOps** repository documents the architecture and includes safe reproducible examples for event fusion, unit tests, CI, security policy, validation flow, and evidence handling while excluding credentials, private infrastructure data, and confidential research artifacts.
 
 ## Runnable tools
 
@@ -56,6 +56,16 @@ ops-toolkit/
 - [Cloud IDS & MLOps](projects/cloud-ids-mlops.md)
 - [Kubernetes & DevOps Platform](projects/kubernetes-devops.md)
 - [Linux & HPC Systems Engineering](projects/linux-hpc-systems.md)
+
+## Engineering standards used in these repositories
+
+- architecture and data/request-flow documentation
+- reproducible setup instructions
+- CI validation where appropriate
+- automated tests for public demo logic
+- security and contribution policies
+- troubleshooting/runbooks
+- explicit separation between demo data and measured/production evidence
 
 ## About
 
