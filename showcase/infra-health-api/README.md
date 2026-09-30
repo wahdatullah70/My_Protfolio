@@ -1,16 +1,16 @@
 # Infra Health API
 
-A small **container-ready infrastructure health service** that exposes Linux host information through a REST API and includes Docker and Kubernetes deployment examples.
+A production-minded **container-ready infrastructure health service** that exposes a small, controlled set of Linux host telemetry through FastAPI and includes hardened Docker/Kubernetes deployment examples.
 
-This project demonstrates how system administration data can be wrapped into a service that is easy to monitor, deploy, test, and integrate into platform tooling.
+This project demonstrates how system-administration data can be wrapped in a service that is easy to monitor, test, containerize, and deploy in a platform-engineering workflow.
 
 ## Endpoints
 
 | Endpoint | Purpose |
 |---|---|
-| `GET /healthz` | Lightweight liveness response |
-| `GET /readyz` | Readiness response |
-| `GET /api/v1/system` | Hostname, uptime, load, memory, disk |
+| `GET /healthz` | Lightweight liveness response with service/version metadata |
+| `GET /readyz` | Readiness check including filesystem accessibility |
+| `GET /api/v1/system` | Hostname, uptime, load, memory, and disk telemetry |
 
 ## Architecture
 
@@ -31,8 +31,8 @@ Client / Monitoring
       JSON API
 
 Deployment options:
-  Docker -> container
-  Kubernetes -> Deployment + Service + probes
+  Docker -> non-root container + HEALTHCHECK
+  Kubernetes -> Deployment + Service + startup/liveness/readiness probes
 ```
 
 ## Run locally
@@ -48,8 +48,30 @@ Then:
 
 ```bash
 curl http://localhost:8080/healthz
+curl http://localhost:8080/readyz
 curl http://localhost:8080/api/v1/system
 ```
+
+## Tests
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+The tests validate:
+
+- liveness endpoint status and metadata;
+- readiness endpoint structure;
+- system telemetry response shape;
+- expected disk/memory/service fields.
+
+The same tests run automatically in the portfolio GitHub Actions workflow.
+
+## Example response
+
+See [`examples/system-response.example.json`](examples/system-response.example.json).
+
+The committed example is **synthetic documentation data**, not a claim about a specific production host.
 
 ## Docker
 
@@ -58,6 +80,13 @@ docker build -t infra-health-api .
 docker run --rm -p 8080:8080 infra-health-api
 ```
 
+The Docker image:
+
+- runs as UID `10001` instead of root;
+- exposes port `8080`;
+- includes a native `HEALTHCHECK` against `/healthz`;
+- disables the Uvicorn server header.
+
 ## Kubernetes
 
 ```bash
@@ -65,21 +94,58 @@ kubectl apply -f k8s/deployment.yaml
 kubectl apply -f k8s/service.yaml
 ```
 
-The Deployment includes **liveness and readiness probes**, resource requests/limits, and a non-root container security context.
+The Deployment includes:
+
+- startup, liveness, and readiness probes;
+- CPU/memory requests and limits;
+- `runAsNonRoot` with fixed UID/GID;
+- `allowPrivilegeEscalation: false`;
+- all Linux capabilities dropped;
+- `readOnlyRootFilesystem: true`;
+- `RuntimeDefault` seccomp profile;
+- service-account token automount disabled.
+
+These controls make the example more representative of a production-minded platform workload while keeping the service simple enough to understand.
+
+## Operational flow
+
+```text
+Container starts
+      |
+      v
+startupProbe -> /healthz
+      |
+      v
+readinessProbe -> /readyz
+      |
+      +---- ready -> Service can send traffic
+      |
+      v
+livenessProbe -> /healthz
+      |
+      +---- repeated failure -> kubelet restarts container
+```
 
 ## Engineering concepts demonstrated
 
 - Linux system telemetry
 - Python / FastAPI
 - REST API design
-- Docker
-- Kubernetes
-- Health/readiness probes
-- Resource management
-- Container security basics
-- Platform engineering
-- DevOps deployment structure
+- endpoint testing
+- Docker healthchecks
+- Kubernetes probes
+- resource management
+- non-root containers
+- capability dropping
+- seccomp
+- read-only root filesystem
+- platform engineering
+- CI validation
 
 ## Security note
 
-This demo intentionally exposes only non-sensitive operational information. Production deployments should add authentication/authorization, network policy, TLS, rate limiting, and explicit controls over which host metrics are exposed.
+This demo intentionally exposes only a narrow set of non-secret operational information. Production deployments should still consider authentication/authorization, TLS, NetworkPolicy, rate limiting, audit logging, and explicit policy for which host metrics may leave a node.
+
+## Related deployment guide
+
+See [`DEPLOYMENT.md`](DEPLOYMENT.md) for build, rollout, verification, and troubleshooting steps.
