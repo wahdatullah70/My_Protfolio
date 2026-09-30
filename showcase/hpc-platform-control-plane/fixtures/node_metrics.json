@@ -1,0 +1,6 @@
+[
+  {"node":"compute01","load1":2.1,"memory_used_percent":41,"disk_used_percent":55,"gpu_temperature_c":48},
+  {"node":"compute02","load1":28.0,"memory_used_percent":93,"disk_used_percent":61,"gpu_temperature_c":76},
+  {"node":"compute03","load1":0.4,"memory_used_percent":22,"disk_used_percent":92,"gpu_temperature_c":0},
+  {"node":"compute04","load1":91.0,"memory_used_percent":88,"disk_used_percent":73,"gpu_temperature_c":84}
+]
