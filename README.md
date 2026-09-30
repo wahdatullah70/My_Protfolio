@@ -6,6 +6,7 @@ My work focuses on multi-node systems, Slurm-based compute, Kubernetes platforms
 
 ## Start here
 
+- **[HPC Platform Control Plane](showcase/hpc-platform-control-plane)** — Slurm-style scheduler/accounting analysis, node/GPU telemetry, incident rules, FastAPI, Prometheus-style metrics, Docker, Kubernetes, tests, and operator runbooks.
 - **[AWS Mini Supercomputer](https://github.com/wahdatullah70/aws-mini-supercomputer)** — Slurm, AWS ParallelCluster, MPI, shared storage, distributed ML, benchmarking, security, and operations.
 - **[Cloud-Native IDS + MLOps](https://github.com/wahdatullah70/cloud-ids-mlops)** — Suricata, Zeek, Tetragon, streaming, feature fusion, reproducibility, and ONNX-oriented inference architecture.
 - **[Slurm Ops Automation](showcase/slurm-ops-automation)** — live/fixture Slurm node and job auditing with JSON/Markdown reports, alert rules, tests, and an operations runbook.
@@ -16,13 +17,15 @@ My work focuses on multi-node systems, Slurm-based compute, Kubernetes platforms
 
 ## What I work with
 
-`Linux` `Rocky Linux` `Ubuntu` `Slurm` `Kubernetes` `Docker` `Helm` `AWS` `Python` `Bash` `MPI` `Calico` `Longhorn` `Suricata` `Zeek` `Tetragon` `Redpanda` `Redis` `ONNX` `FastAPI` `Firebase`
+`Linux` `Rocky Linux` `Ubuntu` `Slurm` `Kubernetes` `Docker` `Helm` `AWS` `Python` `Bash` `MPI` `Prometheus` `FastAPI` `GPU Operations` `Calico` `Longhorn` `Suricata` `Zeek` `Tetragon` `Redpanda` `Redis` `ONNX` `Firebase`
 
 ## Selected engineering work
 
 ### HPC & distributed systems
 
 I work with Linux compute environments, Slurm, workload scheduling, node readiness, distributed workloads, cluster troubleshooting, and reproducible HPC environments.
+
+The **HPC Platform Control Plane** is the largest operations project in this portfolio. It combines scheduler state, job accounting, node and GPU telemetry, policy-driven incident detection, capacity summaries, a REST API, Prometheus-style metrics, CLI reporting, Docker, Kubernetes, automated tests, and an operator runbook. Its committed cluster data is explicitly synthetic so the demo remains reproducible without misrepresenting production evidence.
 
 The **AWS Mini Supercomputer** repository demonstrates a small reproducible cluster design using AWS ParallelCluster, Slurm, MPI, distributed ML workflows, security controls, cost awareness, troubleshooting, and a measured-results framework.
 
@@ -44,6 +47,7 @@ The public **Cloud-Native IDS + MLOps** repository documents the architecture an
 
 ```text
 showcase/
+├── hpc-platform-control-plane/
 ├── slurm-ops-automation/
 ├── hpc-cluster-guardian/
 ├── kubernetes-platform-auditor/
