@@ -14,6 +14,27 @@ jobs:
           python-version: '3.12'
       - name: Compile Python utilities
         run: python -m compileall showcase
+      - name: Run Slurm Ops Automation tests
+        run: python -m unittest discover -s showcase/slurm-ops-automation/tests -v
+      - name: Generate fixture-backed Slurm demo report
+        shell: bash
+        run: |
+          set +e
+          python showcase/slurm-ops-automation/slurm_ops.py \
+            --fixture-dir showcase/slurm-ops-automation/fixtures \
+            --json-out /tmp/slurm-report.json \
+            --markdown-out /tmp/slurm-report.md
+          rc=$?
+          set -e
+          test "$rc" -eq 1
+          python - <<'PY'
+          import json
+          report = json.load(open('/tmp/slurm-report.json'))
+          assert report['status'] == 'warning'
+          assert report['summary']['nodes_total'] == 3
+          assert report['summary']['jobs_total'] == 3
+          print(report['summary'])
+          PY
       - name: Validate operations shell scripts
         shell: bash
         run: |
