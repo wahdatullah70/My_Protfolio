@@ -1,10 +1,12 @@
 import importlib.util
 import pathlib
+import sys
 import unittest
 
 MODULE_PATH = pathlib.Path(__file__).resolve().parents[1] / "slurm_ops.py"
 spec = importlib.util.spec_from_file_location("slurm_ops", MODULE_PATH)
 slurm_ops = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = slurm_ops
 spec.loader.exec_module(slurm_ops)
 
 
