@@ -12,12 +12,17 @@ spec:
       labels:
         app: infra-health-api
     spec:
+      automountServiceAccountToken: false
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: api
           image: infra-health-api:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
+              name: http
           resources:
             requests:
               cpu: 50m
@@ -27,20 +32,30 @@ spec:
               memory: 256Mi
           securityContext:
             allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 10001
+            runAsGroup: 10001
             capabilities:
               drop:
                 - ALL
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            failureThreshold: 12
+            periodSeconds: 5
           livenessProbe:
             httpGet:
               path: /healthz
-              port: 8080
-            initialDelaySeconds: 5
+              port: http
             periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /readyz
-              port: 8080
-            initialDelaySeconds: 2
+              port: http
             periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 3
