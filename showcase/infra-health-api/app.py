@@ -4,9 +4,12 @@ import socket
 import time
 from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 
-app = FastAPI(title="Infra Health API", version="1.0.0")
+APP_NAME = "Infra Health API"
+APP_VERSION = "1.1.0"
+
+app = FastAPI(title=APP_NAME, version=APP_VERSION)
 
 
 def uptime_seconds():
@@ -51,23 +54,41 @@ def disk_info(path="/"):
     }
 
 
-@app.get("/healthz")
-def healthz():
-    return {"status": "ok"}
-
-
-@app.get("/readyz")
-def readyz():
-    return {"status": "ready"}
-
-
-@app.get("/api/v1/system")
-def system_info():
+def system_snapshot():
     return {
         "timestamp": int(time.time()),
+        "service": APP_NAME,
+        "version": APP_VERSION,
         "hostname": socket.gethostname(),
         "uptime_seconds": uptime_seconds(),
         "load_average": load_average(),
         "memory": memory_info(),
         "disk": disk_info("/"),
     }
+
+
+@app.get("/healthz")
+def healthz():
+    return {"status": "ok", "service": APP_NAME, "version": APP_VERSION}
+
+
+@app.get("/readyz")
+def readyz():
+    try:
+        disk = disk_info("/")
+    except OSError as exc:
+        raise HTTPException(status_code=503, detail=f"filesystem unavailable: {exc}") from exc
+
+    return {
+        "status": "ready",
+        "checks": {
+            "filesystem": "ok",
+            "root_free_bytes": disk["free_bytes"],
+            "proc_uptime_available": uptime_seconds() is not None,
+        },
+    }
+
+
+@app.get("/api/v1/system")
+def system_info():
+    return system_snapshot()
