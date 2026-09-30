@@ -27,24 +27,24 @@ A recruiter-grade **HPC operations control plane** that combines Slurm-style sch
 
 ```mermaid
 flowchart LR
-    A[Slurm / node inputs] --> B[HPC Ops Engine]
-    A1[sinfo] --> B
-    A2[squeue] --> B
-    A3[sacct] --> B
-    A4[Linux/GPU telemetry] --> B
-    P[policy.json] --> B
-    B --> C[Incident Rules]
-    B --> D[Cluster Summary]
-    C --> E[FastAPI]
+    A["Slurm / node inputs"] --> B["HPC Ops Engine"]
+    A1["sinfo"] --> B
+    A2["squeue"] --> B
+    A3["sacct"] --> B
+    A4["Linux / GPU telemetry"] --> B
+    P["policy.json"] --> B
+    B --> C["Incident Rules"]
+    B --> D["Cluster Summary"]
+    C --> E["FastAPI"]
     D --> E
-    C --> F[CLI Reports]
+    C --> F["CLI Reports"]
     D --> F
-    E --> G[/api/v1/cluster]
-    E --> H[/api/v1/incidents]
-    E --> I[/metrics]
-    F --> J[JSON]
-    F --> K[Markdown]
-    F --> L[Prometheus text]
+    E --> G["GET /api/v1/cluster"]
+    E --> H["GET /api/v1/incidents"]
+    E --> I["GET /metrics"]
+    F --> J["JSON"]
+    F --> K["Markdown"]
+    F --> L["Prometheus text"]
 ```
 
 ## Demo scenario
