@@ -19,100 +19,84 @@ I am a Computer Science graduate and Research Assistant focused on **High-Perfor
 
 My practical work includes administering Linux-based compute clusters, deploying cloud-native research infrastructure, working with Slurm and Kubernetes, integrating security telemetry from multiple sensors, and building reproducible environments for distributed computing and machine-learning workloads.
 
-I am particularly interested in roles such as:
-
-- **HPC Engineer / HPC Administrator**
-- **Linux / Systems Administrator**
-- **Cloud / DevOps Engineer**
-- **Platform / Infrastructure Engineer**
-- **System Engineer**
-- **MLOps / Research Infrastructure Engineer**
+I am particularly interested in **HPC Engineer, Linux/System Administrator, Cloud/DevOps, Platform/Infrastructure, System Engineer, and MLOps infrastructure roles**.
 
 ---
 
-## 🚀 Featured Engineering Projects
+## ⭐ Runnable Showcase Projects
+
+These projects contain code you can run and inspect — not only project descriptions.
+
+### 🖥️ HPC Cluster Guardian
+
+**Linux + Slurm health diagnostics with structured JSON reporting.**
+
+- Checks load, memory, filesystem capacity, uptime, Slurm partitions, jobs, and nodes.
+- Works gracefully on hosts where Slurm is unavailable.
+- Designed for pre-flight checks, incident triage, maintenance validation, and operations automation.
+
+➡️ [Open project](showcase/hpc-cluster-guardian)
+
+### ☸️ Kubernetes Platform Auditor
+
+**A Python-based cluster auditing utility for Kubernetes operations.**
+
+- Evaluates node readiness and Kubernetes versions.
+- Finds pods outside `Running` / `Succeeded` states.
+- Tracks restarts and affected namespaces.
+- Produces JSON suitable for automation and incident records.
+
+➡️ [Open project](showcase/kubernetes-platform-auditor)
+
+### 📡 Infra Health API
+
+**Container-ready infrastructure telemetry API built with FastAPI.**
+
+- `/healthz`, `/readyz`, and system telemetry endpoints.
+- Dockerized using a non-root user.
+- Kubernetes Deployment includes probes, resource requests/limits, and dropped Linux capabilities.
+- Demonstrates Linux + Python + Docker + Kubernetes integration.
+
+➡️ [Open project](showcase/infra-health-api)
+
+---
+
+## 🚀 Featured Engineering Work
 
 ### 1. ☁️ AWS Mini Supercomputer — Slurm + Distributed Computing
 
 A reproducible small HPC environment on AWS designed around **AWS ParallelCluster, Slurm, shared storage, MPI, and distributed machine learning**.
 
-**Engineering focus:**
-- HPC cluster architecture
-- Slurm workload scheduling
-- Head/compute node design
-- Shared storage
-- MPI workloads
-- PyTorch distributed workloads
-- Benchmarking, cost awareness, security, and troubleshooting
+**Engineering focus:** HPC architecture · Slurm · compute nodes · shared storage · MPI · PyTorch distributed · benchmarking · cloud security
 
-🔗 **Repository:** [aws-mini-supercomputer](https://github.com/wahdatullah70/aws-mini-supercomputer)
-
----
+🔗 [aws-mini-supercomputer](https://github.com/wahdatullah70/aws-mini-supercomputer)
 
 ### 2. 🛡️ Cloud-Native IDS + MLOps Research
 
-Research work around a **multi-sensor intrusion-detection pipeline for cloud-native/HPC environments**, combining network and runtime security telemetry with machine-learning inference.
+Research around a **multi-sensor intrusion-detection pipeline for cloud-native/HPC environments**, combining network/runtime security telemetry with machine-learning inference.
 
-**Technology areas:**
-- Kubernetes
-- Suricata
-- Zeek
-- Tetragon / runtime telemetry
-- Redpanda / streaming
-- Redis
-- ONNX inference
-- Python / ML pipelines
-- Reproducible security validation
+**Stack:** Kubernetes · Suricata · Zeek · Tetragon · Redpanda · Redis · ONNX · Python
 
-🔗 **Repository:** [cloud-ids-mlops](https://github.com/wahdatullah70/cloud-ids-mlops)
-
-📄 **Case study:** [Cloud IDS & MLOps](projects/cloud-ids-mlops.md)
-
----
+🔗 [cloud-ids-mlops](https://github.com/wahdatullah70/cloud-ids-mlops)  
+📄 [Technical case study](projects/cloud-ids-mlops.md)
 
 ### 3. ⚙️ Kubernetes + Slurm Research Platform
 
-Hands-on platform engineering involving Kubernetes-based research infrastructure and workload orchestration for HPC experimentation.
+Hands-on platform engineering involving multi-node Kubernetes, Slurm services, Helm, Calico networking, Longhorn storage, security sensors, streaming components, and research workloads.
 
-**Environment and responsibilities:**
-- Multi-node Kubernetes clusters
-- Slurm controller/compute services
-- Helm deployments
-- Calico networking
-- Longhorn storage
-- Containerized research services
-- Cluster troubleshooting and validation
-
-📄 **Case study:** [Kubernetes & DevOps Platform](projects/kubernetes-devops.md)
-
----
+📄 [Technical case study](projects/kubernetes-devops.md)
 
 ### 4. 🐧 Linux & HPC Systems Administration
 
-Operational work across Linux servers and research clusters, with emphasis on reliability, networking, resource management, troubleshooting, and automation.
+Operational Linux/HPC work covering users, permissions, systemd, SSH, logs, networking, package management, compute-node readiness, Slurm operations, and troubleshooting.
 
-**Core skills demonstrated:**
-- Rocky Linux / Ubuntu administration
-- SSH and remote administration
-- Users, permissions, services, and logs
-- Bash scripting
-- Networking and DNS troubleshooting
-- Package and service management
-- Compute-node readiness and cluster validation
-- Slurm operations
-- Performance/resource observation
-
-📄 **Case study:** [Linux & HPC Systems Engineering](projects/linux-hpc-systems.md)
-
----
+📄 [Technical case study](projects/linux-hpc-systems.md)
 
 ### 5. 🌱 IoT / Cloud Application Engineering
 
-A Flutter + Firebase + Raspberry Pi project demonstrating application/backend integration, authentication, data storage, cloud services, and device API communication.
+Flutter + Firebase + Raspberry Pi application demonstrating Firebase Authentication, Firestore, Storage, Flask REST APIs, device telemetry, and API-key authentication.
 
-**Stack:** Flutter, Firebase Authentication, Firestore, Firebase Storage, Python/Flask, Raspberry Pi API, API-key authentication.
-
-🔗 **Repository:** [iee_project](https://github.com/wahdatullah70/iee_project)
+🔗 [iee_project](https://github.com/wahdatullah70/iee_project)
 
 ---
 
@@ -124,69 +108,51 @@ A Flutter + Firebase + Raspberry Pi project demonstrating application/backend in
 | **Linux / Systems** | Rocky Linux, Ubuntu, Bash, systemd, SSH, users/permissions, logs, networking |
 | **Containers** | Docker, Kubernetes, Helm |
 | **Kubernetes Platform** | Calico, Longhorn, cluster services, multi-node operations |
-| **Cloud / DevOps** | AWS, Git, GitHub, CI/CD concepts, infrastructure automation concepts |
+| **Cloud / DevOps** | AWS, Git, GitHub, CI/CD concepts, infrastructure automation |
 | **Security** | Suricata, Zeek, Tetragon, IDS pipelines, security telemetry |
 | **MLOps / ML** | Python, ONNX inference, model-serving workflows, reproducible validation |
 | **Streaming / Data** | Redpanda, Redis, telemetry pipelines |
 | **Programming** | Python, Bash, Dart/Flutter |
-| **Backend / App** | Firebase Auth, Firestore, Firebase Storage, Flask, REST APIs |
+| **Backend / App** | Firebase Auth, Firestore, Firebase Storage, Flask, FastAPI, REST APIs |
 
 ---
 
 ## 🏗️ Infrastructure Experience
 
-### HPC environment
-- Operated a **multi-node Rocky Linux HPC cluster** for research workloads.
-- Worked with Linux administration, cluster readiness, scheduling concepts, networking, and workload troubleshooting.
-
-### Kubernetes research environment
-- Worked with a multi-node Kubernetes platform running security and data-processing services.
-- Used **Calico**, **Helm**, **Longhorn**, telemetry/security sensors, streaming components, inference services, and alert-processing services.
-
-### Slurm on Kubernetes
-- Validated Slurm controller and compute-node components running within a Kubernetes-based research environment.
-- Worked with node readiness, pod inspection, scheduling infrastructure, and operational troubleshooting.
+- **HPC:** operated a multi-node Rocky Linux research cluster and worked with cluster readiness, scheduling, networking, and workload troubleshooting.
+- **Kubernetes:** worked with a multi-node research platform using Calico, Helm, Longhorn, security telemetry, streaming, inference, and alert-processing services.
+- **Slurm on Kubernetes:** validated controller/compute components, node readiness, pods, and scheduling infrastructure.
 
 ---
 
-## 🔬 Research & Engineering Interests
+## 🔬 Engineering Interests
 
-- High-Performance Computing
-- GPU / accelerated infrastructure
-- Linux systems engineering
-- Distributed systems
-- Kubernetes platform engineering
-- Cloud-native security
-- Intrusion detection
-- MLOps for infrastructure/security workloads
-- Observability and telemetry pipelines
-- Infrastructure automation
+High-Performance Computing · GPU Infrastructure · Linux Systems · Distributed Systems · Kubernetes · Cloud-Native Security · Intrusion Detection · MLOps · Observability · Automation
 
 ---
 
-## 📚 Project Case Studies
+## 🧪 Operations Toolkit
 
-Recruiters and engineers can quickly review these short technical summaries:
+Small reusable examples for daily infrastructure work:
 
-- [Cloud IDS & MLOps](projects/cloud-ids-mlops.md)
-- [Kubernetes & DevOps Platform](projects/kubernetes-devops.md)
-- [Linux & HPC Systems Engineering](projects/linux-hpc-systems.md)
+- [`system-health-check.sh`](ops-toolkit/system-health-check.sh)
+- [`k8s-cluster-check.sh`](ops-toolkit/k8s-cluster-check.sh)
+- [`slurm-job-template.sbatch`](ops-toolkit/slurm-job-template.sbatch)
 
 ---
 
 ## 🎯 What I Bring to an Engineering Team
 
-- Hands-on experience working with **real multi-node Linux and Kubernetes environments**.
-- Ability to troubleshoot across **OS, networking, containers, storage, services, and workloads**.
-- Research experience connecting **HPC, cloud computing, security, and machine learning**.
-- Strong interest in reproducibility, automation, documentation, and operational reliability.
-- Comfortable learning unfamiliar infrastructure and tracing problems from symptoms to root cause.
+- Hands-on experience with **real multi-node Linux and Kubernetes environments**.
+- Troubleshooting across **OS, networking, containers, storage, services, and workloads**.
+- Research experience connecting **HPC, cloud, cybersecurity, and machine learning**.
+- Emphasis on reproducibility, automation, documentation, and operational reliability.
 
 ---
 
 <div align="center">
 
-### Open to HPC, Linux/System Administration, Cloud, DevOps, Platform Engineering, and related infrastructure roles
+### Open to HPC, Linux/System Administration, Cloud, DevOps, Platform Engineering, and infrastructure roles
 
 **GitHub:** [github.com/wahdatullah70](https://github.com/wahdatullah70)  
 **Email:** wahdatullah70@gmail.com
