@@ -1,0 +1,22 @@
+{
+  "timestamp": 0,
+  "service": "Infra Health API",
+  "version": "1.1.0",
+  "hostname": "demo-node",
+  "uptime_seconds": 12345.67,
+  "load_average": [0.42, 0.31, 0.28],
+  "memory": {
+    "mem_total": "32768000 kB",
+    "mem_available": "24192000 kB",
+    "swap_total": "0 kB",
+    "swap_free": "0 kB"
+  },
+  "disk": {
+    "path": "/",
+    "total_bytes": 107374182400,
+    "used_bytes": 37580963840,
+    "free_bytes": 69793218560,
+    "used_percent": 35.0
+  },
+  "note": "Synthetic example response for documentation; values are illustrative."
+}
