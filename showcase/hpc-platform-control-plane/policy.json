@@ -1,0 +1,7 @@
+{
+  "pending_minutes_warning": 15,
+  "memory_used_percent_warning": 90,
+  "disk_used_percent_warning": 90,
+  "load_per_cpu_warning": 1.5,
+  "gpu_temperature_c_warning": 82
+}
