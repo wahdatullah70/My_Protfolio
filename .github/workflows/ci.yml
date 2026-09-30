@@ -72,3 +72,27 @@ jobs:
         run: |
           cd showcase/infra-health-api
           python -c "import app; print(app.app.title, app.app.version)"
+      - name: Install HPC Platform Control Plane dependencies
+        run: pip install -r showcase/hpc-platform-control-plane/requirements.txt
+      - name: Run HPC Platform Control Plane tests
+        run: python -m unittest discover -s showcase/hpc-platform-control-plane/tests -v
+      - name: Generate HPC Platform Control Plane demo report
+        shell: bash
+        run: |
+          set +e
+          python showcase/hpc-platform-control-plane/cli.py \
+            --json-out /tmp/hpc-control-plane.json \
+            --markdown-out /tmp/hpc-control-plane.md \
+            --metrics-out /tmp/hpc-control-plane.metrics
+          rc=$?
+          set -e
+          test "$rc" -eq 2
+          python - <<'PY'
+          import json
+          report = json.load(open('/tmp/hpc-control-plane.json'))
+          assert report['status'] == 'critical'
+          assert report['summary']['nodes_total'] == 4
+          assert report['summary']['jobs_pending'] == 1
+          assert report['summary']['incidents_total'] >= 7
+          print(report['summary'])
+          PY
