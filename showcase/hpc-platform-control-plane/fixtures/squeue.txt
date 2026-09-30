@@ -1,0 +1,5 @@
+# job_id|user|partition|state|elapsed|nodes|reason
+9101|alice|gpu|RUNNING|00:42:18|1|compute04
+9102|bob|compute|PENDING|00:23:00|2|Resources
+9103|carol|compute|RUNNING|00:11:37|1|compute02
+9104|dave|gpu|FAILED|00:03:12|1|NonZeroExitCode
