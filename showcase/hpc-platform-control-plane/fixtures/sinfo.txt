@@ -1,0 +1,5 @@
+# node|state|cpus|allocated_cpus|idle_cpus|memory_mb|gres
+compute01|idle|32|0|32|128000|gpu:a100:1
+compute02|mixed|32|20|12|128000|gpu:a100:1
+compute03|drain|32|0|32|128000|(null)
+compute04|alloc|64|64|0|256000|gpu:a100:4
